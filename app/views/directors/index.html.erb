@@ -1,0 +1,12 @@
+<h1>Directors</h1>
+<ul>
+  <% @directors.each do |directors| %>
+    <li>
+      <%= "Name: #{directors.first_name} #{directors.last_name}" %>
+    </li>
+    <li>
+      <%= "Age: #{directors.age}" %>
+    </li>
+    <br />
+  <% end %>
+</ul>

@@ -1,0 +1,18 @@
+<h1>Movies</h1>
+<ul>
+  <% @movies.each do |movies| %>
+    <li>
+      <%= "Title: #{movies.title}" %>
+    </li>
+    <li>
+      <%= "Description: #{movies.description}" %>
+    </li>
+    <li>
+      <%= "Duration: #{movies.duration}" %>
+    </li>
+    <li>
+      <%= "Price: #{movies.price}" %>
+    </li>
+    <br />
+  <% end %>
+</ul>

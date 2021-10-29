@@ -1,0 +1,15 @@
+<h1>Critics</h1>
+
+<ul>
+  <% @critics.each do |critics| %>
+    <li>
+      <%= critics.author %>
+    </li>
+    <li>
+      <%= critics.score %>
+    </li>
+    <li>
+      <%= critics.avaliation %>
+    </li>
+  <% end %>
+</ul>
