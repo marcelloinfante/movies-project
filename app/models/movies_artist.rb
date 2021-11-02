@@ -1,2 +1,0 @@
-class MoviesArtist < ApplicationRecord
-end

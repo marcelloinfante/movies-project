@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   def read
-    genres = Genres.all
+    genres = Genre.all
     render json: {
       status:'Success',
       message: 'Genres loaded',

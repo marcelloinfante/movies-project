@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   get 'artists/read', to: 'artists#read'
   put 'artists/update', to: 'artists#update'
   delete 'artists/delete', to: 'artists#delete'
-  
+
+  post 'critics/create', to: 'critics#create'
+  get 'critics/read', to: 'critics#read'
+  put 'critics/update', to: 'critics#update'
+  delete 'critics/delete', to: 'critics#delete'
+
   get 'genres/read'
   get 'stores/read'
-  get 'critics/read'
 end

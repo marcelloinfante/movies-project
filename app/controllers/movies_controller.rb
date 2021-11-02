@@ -29,7 +29,8 @@ class MoviesController < ApplicationController
 
   def delete
     movie = Movie.find_by(title: params['title'])
-    puts movie.destroy.errors.massage
+    movie.destroy
+    render json: movie
   end
 
   private

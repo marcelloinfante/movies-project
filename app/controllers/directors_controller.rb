@@ -26,9 +26,9 @@ class DirectorsController < ApplicationController
 
   def delete
     director = Director.find_by(last_name: params['last_name'])
-    puts "TESTE!!!!!"
     puts director
     director.destroy
+    render json: director
   end
 
   private

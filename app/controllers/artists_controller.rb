@@ -19,21 +19,28 @@ class ArtistsController < ApplicationController
       if !(key === 'first_name' || key === 'last_name' || key === 'age' || key === 'controller'|| key === 'action')
         title = value
         movie = Movie.find_by(title: title)
-        MoviesArtist.create(movie_id: movie.id, artist_id: artist.id)
+        ArtistsMovie.create(movie_id: movie.id, artist_id: artist.id)
       end
     end
     render json: artist
   end
 
   def update
-    artist = Artist.find_by(last_name: params['last_name'])
-    artist.update_attributes(artist_params)
-    render json: artist
+    begin
+      artist = Artist.find_by(last_name: params['last_name'])
+      artist.update_attributes(artist_params)
+      render json: artist
+    rescue
+    end
   end
 
   def delete
-    movie = Movie.find_by(title: params['title'])
-    puts movie.destroy.errors.massage
+    begin
+      artist = Artist.find_by(last_name: params['last_name'])
+      artist.destroy
+      render json: artist
+    rescue
+    end
   end
 
   private

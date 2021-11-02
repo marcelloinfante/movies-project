@@ -6,5 +6,6 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.integer :duration
       t.float :price
       t.timestamps
+    end
   end
 end
