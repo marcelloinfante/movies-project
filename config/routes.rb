@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   post 'movies/create', to: 'movies#create'
   get 'movies/read', to: 'movies#read'
   put 'movies/update', to: 'movies#update'

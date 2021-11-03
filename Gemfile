@@ -12,6 +12,8 @@ gem 'pry-byebug'
 
 gem 'activeadmin'
 
+gem 'devise'
+
 gem 'factory_bot_rails'
 
 gem 'vcr'

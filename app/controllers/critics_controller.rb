@@ -10,32 +10,52 @@ class CriticsController < ApplicationController
   end
 
   def create
-    movie = Movie.find_by(id: params['movie'])
-    critic = Critic.create(
-      author: params['author'],
-      score: params['score'],
-      avaliation: params['avaliation'],
-      movie: movie
-    )
-    render json: critic
+    begin
+      movie = Movie.find_by(title: params['movie'])
+      current_critic = Critic.find_by(author: params['author'], movie: movie)
+      if !current_critic
+        critic = Critic.create(
+          author: params['author'],
+          score: params['score'],
+          avaliation: params['avaliation'],
+          movie: movie
+        )
+        render json: critic
+      else
+        render plain: "Critic already exist"
+      end
+    rescue
+      render plain: "Movie don't exist"
+    end
   end
 
   def update
-    director = Director.find_by(last_name: params['last_name'])
-    director.update_attributes(director_params)
-    render json: director
+    begin
+      movie = Movie.find_by(title: params['movie'])
+      puts movie
+      critic = Critic.find_by(author: params['author'], movie: movie)
+      puts critic
+      critic.update_attributes(critic_params)
+      render json: critic
+    rescue
+      render plain: "Critic don't exist"
+    end
   end
 
   def delete
-    director = Director.find_by(last_name: params['last_name'])
-    puts "TESTE!!!!!"
-    puts director
-    director.destroy
+    begin
+      movie = Movie.find_by(title: params['movie'])
+      critic = Critic.find_by(author: params['author'], movie: movie)
+      critic.destroy
+      render json: critic
+    rescue
+      render plain: "Critic don't exist"
+    end
   end
 
   private
 
-  def director_params
-    params.permit(:first_name, :last_name, :age)
+  def critic_params
+    params.permit(:author, :score, :avaliation)
   end
 end
